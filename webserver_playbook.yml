@@ -1,0 +1,17 @@
+---
+- name: Install and Start Apache Web Server
+  hosts: all_servers
+  become: yes
+
+  tasks:
+    - name: Install Apache Package (Bypass GPG Check)
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+        disable_gpg_check: true
+
+    - name: Start and Enable Apache Service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes

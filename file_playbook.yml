@@ -1,0 +1,10 @@
+---
+- name: File Setup Playbook           # 1. Is pure play ka naam
+  hosts: all_servers                  # 2. TARGET YAHAN HAI! (Isme aapke target VM ka IP hai)
+  become: yes                         # 3. Root permission chahiye ya nahi
+
+  tasks:                              # 4. Ab yahan se saare tasks shuru honge
+    - name: text file
+      ansible.builtin.copy:
+        dest: "/tmp/hello.txt"
+        content: "welcome to ansible" # ⚠️ Ek choti correction: 'content' line ko 'dest' ke ekdam niche (same line alignment mein) hona chahiye, tabhi YAML sahi mana jayega.

@@ -1,0 +1,13 @@
+---
+- name: Setup Cronjob on Target VM
+  hosts: all_servers
+  become: yes
+
+  tasks:
+    - name: Schedule a test backup job every midnight
+      ansible.builtin.cron:
+        name: "My First Ansible Cron"
+        minute: "0"
+        hour: "0"
+        job: "/bin/echo 'Hello from Ansible' >> /var/log/ansible_test.log"
+        state: present

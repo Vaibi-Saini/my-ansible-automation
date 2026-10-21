@@ -1,0 +1,11 @@
+---                                     # 1. Start line
+- name: System User Management          # 2. Play ka naam
+  hosts: all_servers                    # 3. Kahaan chalana hai
+  become: yes                           # 4. Root privilege chahiye
+
+  tasks:                                # 5. Tasks ki shuruat
+    - name: Create a new user named Ramesh   # 6. Task 1 ka naam
+      ansible.builtin.user:                  # 7. Kaun sa module use hoga
+        name: "ramesh"                       # 8. Module ka parameter (Username)
+        comment: "Created via Ansible"        # 9. Module ka parameter (Description)
+        state: present                       # 10. User hona chahiye (present)
